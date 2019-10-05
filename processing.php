@@ -54,14 +54,28 @@ function uploadToApi($target_file){
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js'></script>
     </head>
+    
     <body>
         <div class="form-group container">
             <label for="exampleTextarea">Result</label>
             <textarea class="form-control" id="exampleTextarea" rows="30">
             <?php
+                $name= "";
+                $i = 0;
                 foreach($response['ParsedResults'] as $pareValue) {
-                    echo $pareValue['ParsedText'];
+                    $name =  $pareValue['ParsedText'];
                 }
+                $arr = explode("\n", $name);
+                $restro = $arr[0];
+                echo $restro;
+                $amt = "";
+                foreach ($arr as $str){
+                    echo $str;
+                    if(is_numeric($str)){
+                        $amt = $str;
+                    }
+                }
+                echo $amt;
             ?></textarea>
         </div>
     </body>

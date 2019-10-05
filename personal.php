@@ -52,7 +52,7 @@
           $res = $database->query($sql);
           if(mysqli_num_rows($res) > 0){
             while($row = mysqli_fetch_assoc($res)){
-              echo $row['amount'], $row['created_at'];
+              echo $row['amount']," ", $row['created_at'];
               echo "<br>";
             }
           }
@@ -87,10 +87,6 @@
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary" name = "submit">Save changes</button>
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
