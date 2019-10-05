@@ -11,7 +11,6 @@
       <script type="text/javascript" src="./javascripts/personal.js"></script>
       <link rel="stylesheet" href="./stylesheets/main.css">
       <link rel="stylesheet" href="./stylesheets/personal.css">
-      <link rel="icon" href="/images/paper-plane.png">
   </head>
   <body>
     <nav class="navbar navbar-inverse">
@@ -22,8 +21,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>                        
           </button>
-              <a class="navbar-brand brand" href="#">Travnal</a>
-              <img class="logo-image" src="/images/paper-plane.png">
+              <a class="navbar-brand brand" href="#">MoneySplit</a>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">              

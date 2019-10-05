@@ -5,7 +5,6 @@ body {
   
   .file-upload {
     background-color: #ffffff;
-    width: 600px;
     margin: 50px auto;
     padding: 20px;
 
@@ -114,4 +113,8 @@ body {
   .remove-image:active {
     border: 0;
     transition: all .2s ease;
+  }
+  
+  .modal{
+    color: black
   }
