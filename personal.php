@@ -1,3 +1,22 @@
+<?php
+  include_once("Database.class.php");
+  include_once("Session.class.php");
+
+  private $connection;
+  public function __construct(){
+    global $database;
+    $this->connection = $database->getConnection();
+  }
+  
+  public function getData(){
+    global $database;
+    $u_id = $_SESSION['user_id'];
+    $sql = "Select amount, created_at From expense Where user_id = $u_id";
+    $res = $database->query($sql);
+  }
+  while($row = mysqli_fetch_assoc($res));
+?>
+
 <!DOCTYPE html>
 <html>
   <head>

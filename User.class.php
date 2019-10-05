@@ -31,7 +31,7 @@
                     $row=mysqli_fetch_assoc($res);	
                     extract($row);
                     $_SESSION['user_id']=$user_id;
-                    Functions::redirect('');
+                    header("Location: personal.php");
 
                 }
             
