@@ -27,9 +27,9 @@
           <ul class="nav navbar-nav">              
           </ul>
           <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="/feed">Personal</a></li>
-              <li ><a href="#">Groups</a></li>
-              <li> <a href="#">History</a></li>
+              <li><a href="personal.php">Personal</a></li>
+              <li class="active"><a href="#">Groups</a></li>
+              <li> <a href="history.php">History</a></li>
               <form class="navbar-form navbar-left" action="/search" method="POST">
                   <input type="text" name="search_value" class="form-control" placeholder="Search">
                   <button type="submit" class="btn btn-default">Submit</button>
@@ -38,20 +38,34 @@
           </div>
       </div>
     </nav>
-    <div class="file-upload">
-      <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
-      <div class="image-upload-wrap">
-        <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-        <div class="drag-text">
-          <h3>Drag and drop a file or select add Image</h3>
+    <div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Add another group
+      </button>
+    </div>
+    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title">Add Another Group</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <div class="form">
+            <form>
+            <p>Group Name <input type="text"><p>
+            <button>Add Group</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
         </div>
       </div>
-      <div class="file-upload-content">
-        <img class="file-upload-image" src="#" alt="your image" />
-        <div class="image-title-wrap">
-          <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-        </div>
-      </div>
+    </div>
     </div>
   </body>
 </html>
