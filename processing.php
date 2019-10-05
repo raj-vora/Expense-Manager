@@ -1,4 +1,6 @@
 <?php
+session_start();
+include_once('User.class.php');
 if(isset($_POST['submit']) && isset($_FILES)) {
     require __DIR__ . '/vendor/autoload.php';
     $target_dir = "uploads/";
@@ -36,7 +38,7 @@ function uploadToApi($target_file){
     $client = new \GuzzleHttp\Client();
     try {
     $r = $client->request('POST', 'https://api.ocr.space/parse/image',[
-        'headers' => ['apiKey' => 'helloworld'],
+        'headers' => ['apiKey' => '3fd8a6b87a88957'],
         'multipart' => [
             [
                 'name' => 'file',
@@ -46,41 +48,25 @@ function uploadToApi($target_file){
     ], ['file' => $fileData]);
     $response =  json_decode($r->getBody(),true);
     if($response['ErrorMessage'] == "") {
-?>
-<html>
-    <head>
-    <title>Result</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js'></script>
-    </head>
-    
-    <body>
-        <div class="form-group container">
-            <label for="exampleTextarea">Result</label>
-            <textarea class="form-control" id="exampleTextarea" rows="30">
-            <?php
-                $name= "";
+        $name= "";
                 $i = 0;
                 foreach($response['ParsedResults'] as $pareValue) {
                     $name =  $pareValue['ParsedText'];
                 }
                 $arr = explode("\n", $name);
-                $restro = $arr[0];
-                echo $restro;
                 $amt = "";
+                $i = 0;
+                $prev= "";
                 foreach ($arr as $str){
-                    echo $str;
-                    if(is_numeric($str)){
+                    if(!(preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]|[A-Za-z].*/', $str))){
+                        #has numbers
+                        $prev = $amt;
                         $amt = $str;
                     }
                 }
-                echo $amt;
-            ?></textarea>
-        </div>
-    </body>
-</html>
-<?php
+                $obj = new User();
+                $obj->adddExpense($prev,$_SESSION['user_id']);
+                header("Location: personal.php");
     } else {
         header('HTTP/1.0 400 Forbidden');
         echo $response['ErrorMessage'];

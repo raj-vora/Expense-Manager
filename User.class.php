@@ -18,6 +18,15 @@
             return mysqli_insert_id($this->connection);
         }
 
+        public function adddExpense($amt,$uid){
+            date_default_timezone_set('Asia/Kolkata');
+            $date = date("Y-m-d H:i:s");
+            $sql = "INSERT INTO expense (user_id,amount,created_at) VALUES ($uid,$amt,'$date')";
+            global $database;
+            $res=$database->query($sql);
+            return mysqli_insert_id($this->connection);
+        }
+
         public function checkLogin($name,$pass){
             global $database;
             $res=$database->query("SELECT count(*) as cnt FROM user WHERE username = '$name' and password = '$pass'");
