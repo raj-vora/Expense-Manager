@@ -28,7 +28,7 @@
                 <li><a href="personal.php">Personal</a></li>
                 <li><a href="groups.php">Groups</a></li>
                 <li class="active"> <a href="#">History</a></li>
-                <li> <a href="#">Log Out</a></li>
+                <li><a href="logout.php">Log Out</a></li>
             </ul>
             </div>
         </div>

@@ -38,13 +38,9 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li class="active"><a href="/feed">Personal</a></li>
-              <li ><a href="#">Groups</a></li>
-              <li> <a href="history.php">History</a></li>
-              <li>
-                <form action="" method="POST">
-                  <button type="submit" name="logout" class="btn btn-primary">Log Out</button>
-                </form>
-              </li>
+              <li><a href="#">Groups</a></li>
+              <li><a href="history.php">History</a></li>
+              <li><a href="logout.php">Log Out</a></li>
           </ul>
           </div>
       </div>

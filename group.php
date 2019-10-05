@@ -30,7 +30,7 @@
               <li><a href="personal.php">Personal</a></li>
               <li class="active"><a href="#">Groups</a></li>
               <li> <a href="history.php">History</a></li>
-              <li> <a href="#">Log Out</a></li>
+              <li> <a href="logout.php">Log Out</a></li>
           </ul>
           </div>
       </div>
