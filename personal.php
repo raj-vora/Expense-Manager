@@ -1,22 +1,3 @@
-<?php
-  include_once("Database.class.php");
-  include_once("Session.class.php");
-
-  private $connection;
-  public function __construct(){
-    global $database;
-    $this->connection = $database->getConnection();
-  }
-  
-  public function getData(){
-    global $database;
-    $u_id = $_SESSION['user_id'];
-    $sql = "Select amount, created_at From expense Where user_id = $u_id";
-    $res = $database->query($sql);
-  }
-  while($row = mysqli_fetch_assoc($res));
-?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -58,6 +39,29 @@
       </div>
     </nav>
     <div>
+      <?php
+        include_once("Database.class.php");
+        include_once("Session.class.php");
+        session_start();
+          $connection;
+          $res;
+          global $database;
+          $connection = $database->getConnection();
+          $u_id = $_SESSION["user_id"];
+          $sql = "SELECT amount, created_at FROM expense WHERE user_id = $u_id";
+          $res = $database->query($sql);
+          if(mysqli_num_rows($res) > 0){
+            while($row = mysqli_fetch_assoc($res)){
+              echo $row['amount'], $row['created_at'];
+              echo "<br>";
+            }
+          }
+          else{
+            echo "No result";
+          }
+      ?>
+    </div>
+    <div>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
         Add another expense
       </button>
@@ -71,14 +75,18 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          
           <div class="modal-body">
-          <div class="file-upload">
-                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">
-                  Upload Bill
-                </button>
+            <form id="upload" method='POST' action='./processing.php' enctype="multipart/form-data">
+              <div class="file-upload">
+                <input type="file" placeholder="Upload Bill" class="form-control" name="attachment"  title="Upload Bill" required="required" aria-required="true">
                 <div class="file-upload-content">
                   <img class="file-upload-image" src="#" alt="your image" />
                 </div>
+              </div>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" name = "submit">Save changes</button>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

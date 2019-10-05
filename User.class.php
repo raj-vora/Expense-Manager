@@ -26,11 +26,11 @@
                 if($cnt != 1 ){
                     echo "Error whle login";
                 }else{
-                    Session::startSession();
+                    session_start();
                     $res=$database->query("SELECT user_id FROM user WHERE username = '$name' and password = '$pass'");
                     $row=mysqli_fetch_assoc($res);	
                     extract($row);
-                    $_SESSION['user_id']=$user_id;
+                    $_SESSION['u_id']=$user_id;
                     header("Location: personal.php");
 
                 }
