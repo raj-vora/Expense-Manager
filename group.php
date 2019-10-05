@@ -9,7 +9,6 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
       <script type="text/javascript" src="./javascripts/personal.js"></script>
-      
       <link rel="stylesheet" href="./stylesheets/main.css">
       <link rel="stylesheet" href="./stylesheets/personal.css">
   </head>
@@ -31,15 +30,11 @@
               <li><a href="personal.php">Personal</a></li>
               <li class="active"><a href="#">Groups</a></li>
               <li> <a href="history.php">History</a></li>
-              <form class="navbar-form navbar-left" action="/search" method="POST">
-                  <input type="text" name="search_value" class="form-control" placeholder="Search">
-                  <button type="submit" class="btn btn-default">Submit</button>
-              </form>
+              <li> <a href="#">Log Out</a></li>
           </ul>
           </div>
       </div>
     </nav>
-    
     <div class="row">
         <div class="container">
             <div class="col-md-4"></div>

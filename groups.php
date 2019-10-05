@@ -30,10 +30,7 @@
               <li><a href="personal.php">Personal</a></li>
               <li class="active"><a href="#">Groups</a></li>
               <li> <a href="history.php">History</a></li>
-              <form class="navbar-form navbar-left" action="/search" method="POST">
-                  <input type="text" name="search_value" class="form-control" placeholder="Search">
-                  <button type="submit" class="btn btn-default">Submit</button>
-              </form>
+              <li> <a href="#">Log Out</a></li>
           </ul>
           </div>
       </div>
