@@ -31,7 +31,7 @@
 </head>
 <body>
     <div class="brand row">
-        <h1>Money Split<img class="logo-image" src="/images/paper-plane.png"></h1>
+        <h1>Money Split</h1>
     </div>
     <div class="row">
         <div class="container">
@@ -74,7 +74,7 @@
         </div>
     </div>
     <div class="footer">
-        Developed with ❤ by trotters at DJMB
+        Developed with ❤ by kangal log
     </div>
 </body>
 </html>
