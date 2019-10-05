@@ -33,5 +33,29 @@
             </div>
         </div>
         </nav>
+
+        <div>
+        <?php
+        include_once("Database.class.php");
+        include_once("Session.class.php");
+        session_start();
+          $connection;
+          $res;
+          global $database;
+          $connection = $database->getConnection();
+          $u_id = $_SESSION["user_id"];
+          $sql = "SELECT amount, created_at FROM expense WHERE user_id = $u_id UNION SELECT amount, created_at FROM shares WHERE user_id = $u_id ORDER BY created_at";
+          $res = $database->query($sql);
+          if(mysqli_num_rows($res) > 0){
+            while($row = mysqli_fetch_assoc($res)){
+              echo $row['amount']," ", $row['created_at'];
+              echo "<br>";
+            }
+          }
+          else{
+            echo "No result";
+          }
+      ?>
+      </div>
     </body>
 </html>
