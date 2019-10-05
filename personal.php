@@ -1,3 +1,13 @@
+<?php
+  if(isset($POST_["logout"])){
+    // session_start();
+    echo "hi";
+    session_unset();
+    session_destroy();
+    header("Location: index.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,7 +40,11 @@
               <li class="active"><a href="/feed">Personal</a></li>
               <li ><a href="#">Groups</a></li>
               <li> <a href="#">History</a></li>
-              <li> <a href="#">Log Out</a></li>
+              <li>
+                <form action="" method="POST">
+                  <button type="submit" name="logout" class="btn btn-primary">Log Out</button>
+                </form>
+              </li>
           </ul>
           </div>
       </div>
@@ -45,7 +59,7 @@
           global $database;
           $connection = $database->getConnection();
           $u_id = $_SESSION["user_id"];
-          $sql = "SELECT amount, created_at FROM expense WHERE user_id = $u_id";
+          $sql = "SELECT amount, created_at FROM expense WHERE user_id = $u_id ORDER BY created_at";
           $res = $database->query($sql);
           if(mysqli_num_rows($res) > 0){
             while($row = mysqli_fetch_assoc($res)){
