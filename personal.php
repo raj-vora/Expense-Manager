@@ -46,27 +46,42 @@
       </div>
     </nav>
     <div>
-      <?php
+    <?php
         include_once("Database.class.php");
         include_once("Session.class.php");
         session_start();
           $connection;
           $res;
+          $i = 1;
+          $sum = 0;
           global $database;
           $connection = $database->getConnection();
           $u_id = $_SESSION["user_id"];
-          $sql = "SELECT amount, created_at FROM expense WHERE user_id = $u_id ORDER BY created_at";
+          $sql = "SELECT amount, created_at, expense_id FROM expense WHERE user_id = $u_id";
           $res = $database->query($sql);
           if(mysqli_num_rows($res) > 0){
-            while($row = mysqli_fetch_assoc($res)){
-              echo $row['amount']," ", $row['created_at'];
-              echo "<br>";
-            }
+            while($row = mysqli_fetch_assoc($res)){ ?>
+
+              <div class="w3-block w3-black w3-left-align">Expense <?php echo $i; $i++; ?></div>
+              <div class="w3-container">
+                <p>Bill amount is <?php echo $row["amount"] ?></p>
+                <?php $sum += $row["amount"]; ?>
+                <p>Time: <?php echo $row["created_at"] ?></p> <br/>
+              </div>
+          
+            
+            <?php
+            } ?>
+            <div class="w3-block w3-black w3-left-align">
+            <p>Total amount is <?php echo $sum; ?></p>
+            </div>
+            <?php
           }
           else{
             echo "No result";
           }
       ?>
+
     </div>
     <div>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
