@@ -57,16 +57,22 @@ $u_id = $_SESSION["user_id"];
       <div class="col-md-4">
       <h2 class="drag-text">Groups</h2>
         <?php
-          $sql1 = "SELECT grp_name FROM grp WHERE user_id = $u_id";
+          $sql1 = "SELECT grp_name, grp_id FROM grp WHERE user_id = $u_id";
           $res1 = $database->query($sql1);
           if(mysqli_num_rows($res1) > 0){
             while($row = mysqli_fetch_assoc($res1)){
               ?>
+              <form action="group.php" method="POST">
               <button class="card card-default btn btn-primary">
+              <?php
+                $_SESSION['g_id'] = $row["grp_id"];
+              ?>
                 <div class="card-body">
                   <h5 class="lead"><?php echo $row["grp_name"]; ?></h5>
                 </div>
-              </button><br><br>
+              </button>
+              </form>
+              <br><br>
           <?php }
           }
           else{
