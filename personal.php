@@ -69,7 +69,12 @@
                 <p>Time: <?php echo $row["created_at"] ?></p> <br/>            
             <?php
             } ?>
+<<<<<<< HEAD
             <p>Total amount is <?php echo $sum; ?></p>
+=======
+            <div class="w3-block w3-black w3-left-align">
+            <p>Total amount you spend is <?php echo $sum; ?></p>
+>>>>>>> 04646adaa10718b2907b069e51448e6976e26752
             </div>
             <?php
           }
