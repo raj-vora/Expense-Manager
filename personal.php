@@ -38,60 +38,61 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li class="active"><a href="/feed">Personal</a></li>
-              <li><a href="groups.php">Groups</a></li>
+              <li><a href="#">Groups</a></li>
               <li><a href="history.php">History</a></li>
               <li><a href="logout.php">Log Out</a></li>
           </ul>
           </div>
       </div>
     </nav>
-    <div>
-    <?php
-        include_once("Database.class.php");
-        include_once("Session.class.php");
-        session_start();
-          $connection;
-          $res;
-          $i = 1;
-          $sum = 0;
-          global $database;
-          $connection = $database->getConnection();
-          $u_id = $_SESSION["user_id"];
-          $sql = "SELECT amount, created_at, expense_id FROM expense WHERE user_id = $u_id";
-          $res = $database->query($sql);
-          if(mysqli_num_rows($res) > 0){
-            while($row = mysqli_fetch_assoc($res)){ ?>
-
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title">Expense <?php echo $i; $i++; ?></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"></h6>
-                  <p class="card-text">
-                    <p>Bill amount is <?php echo $row["amount"] ?></p>
-                    <?php $sum += $row["amount"]; ?>
-                    <p>Time: <?php echo $row["created_at"] ?></p><br>
-                  </p>   
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <?php
+            include_once("Database.class.php");
+            include_once("Session.class.php");
+            session_start();
+              $connection;
+              $res;
+              $i = 1;
+              $sum = 0;
+              global $database;
+              $connection = $database->getConnection();
+              $u_id = $_SESSION["user_id"];
+              $sql = "SELECT amount, created_at, expense_id FROM expense WHERE user_id = $u_id";
+              $res = $database->query($sql);
+              if(mysqli_num_rows($res) > 0){
+                while($row = mysqli_fetch_assoc($res)){ ?>
+                  <div class="card card-default">
+                    <div class="card-body">
+                      <h5 class="lead">Expense <?php echo $i; $i++; ?></h5>
+                      <h6 class="card-subtitle mb-2 text-muted"></h6>
+                      <p class="card-text">
+                        <p>Bill amount is <?php echo $row["amount"] ?></p>
+                        <?php $sum += $row["amount"]; ?>
+                        <p>Time: <?php echo $row["created_at"] ?></p><br>
+                      </p>   
+                    </div>
+                  </div><br>
+                <?php
+                } ?>
+                <div class="w3-block w3-black w3-left-align">
+                <p>Total amount you spend is <?php echo $sum; ?></p>
                 </div>
-              </div>
-
-            <?php
-            } ?>
-            <div class="w3-block w3-black w3-left-align">
-            <p>Total amount you spend is <?php echo $sum; ?></p>
-            </div>
-            <?php
-          }
-          else{
-            echo "No result";
-          }
-      ?>
-
+                <?php
+              }
+              else{
+                echo "No result";
+              }
+          ?>
+        <div>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          Add another expense
+          </button>
+        </div>
+      </div>
     </div>
-    <div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-        Add another expense
-      </button>
-    </div>
+    
     <div class="modal" id="myModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
