@@ -48,6 +48,11 @@
                     </form>
                     <form action="">
                         <h3>Expenses</h3>        
+                            <div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                Add another expense
+                            </button>
+                            </div>
                         <input type="radio" name="demo" id="unequally">
                             <label for="unequally"><h3>Divide Unequally</h3></label><br>
                         <input type="radio" name="demo" id="equally" checked>
@@ -65,6 +70,30 @@
                 <div class="col-md-4"></div>
             </div>
         </div>
+        <div class="modal" id="myModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title">Add Another Expense</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+          <div class="modal-body">
+            <form id="upload" method='POST' action='./processing.php' enctype="multipart/form-data">
+              <div class="file-upload">
+                <input type="file" placeholder="Upload Bill" class="form-control" name="attachment"  title="Upload Bill" required="required" aria-required="true">
+                <div class="file-upload-content">
+                  <img class="file-upload-image" src="#" alt="your image" />
+                </div>
+              </div>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" name = "submit">Save changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
         <script type="text/javascript" src="./javascripts/group.js"></script>
     </body>
     </html>
