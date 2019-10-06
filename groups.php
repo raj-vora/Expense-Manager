@@ -1,18 +1,18 @@
 <?php
 session_start();
+include_once("Database.class.php");
+include_once("Session.class.php");
+global $connection;
+$res;
+$res1;
+global $database;
+$connection = $database->getConnection();
+$u_id = $_SESSION["user_id"];
   if(isset($_POST['submit'])){
-    include_once("Database.class.php");
-    include_once("Session.class.php");
-    global $connection;
-    $res;
-    global $database;
-    $connection = $database->getConnection();
-    $u_id = $_SESSION["user_id"];
-    $g_name = $_POST["group_name"];
+    $g_name = $_POST["grp_name"];
     $sql = "INSERT INTO grp (grp_name,user_id) VALUES ('$g_name', $u_id);";
     $res = $database->query($sql);
   }
-
 ?>
 
 <!DOCTYPE html>
@@ -45,13 +45,28 @@ session_start();
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li><a href="personal.php">Personal</a></li>
-              <li class="active"><a href="#">Groups</a></li>
+              <li class="active"><a href="groups.php">Groups</a></li>
               <li> <a href="history.php">History</a></li>
               <li> <a href="logout.php">Log Out</a></li>
           </ul>
           </div>
       </div>
     </nav>
+    <div>
+      <?php
+        $sql1 = "SELECT grp_name FROM grp WHERE user_id = $u_id";
+        $res1 = $database->query($sql1);
+        if(mysqli_num_rows($res1) > 0){
+          while($row = mysqli_fetch_assoc($res1)){
+            echo $row["grp_name"];
+            echo "<br/>";
+          }
+        }
+        else{
+          echo "No result";
+        }
+      ?>
+    </div>
     <div>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
         Add another group
@@ -69,7 +84,7 @@ session_start();
           <div class="modal-body">
           <div class="form">
             <form action="" method="POST">
-            <p>Group Name <input type="text" name="group_name"><p>
+            <p>Group Name <input type="text" name="grp_name"><p>
             <button type="submit" name="submit">Add Group</button>
             </form>
           </div>
