@@ -1,3 +1,20 @@
+<?php
+session_start();
+  if(isset($_POST['submit'])){
+    include_once("Database.class.php");
+    include_once("Session.class.php");
+    global $connection;
+    $res;
+    global $database;
+    $connection = $database->getConnection();
+    $u_id = $_SESSION["user_id"];
+    $g_name = $_POST["group_name"];
+    $sql = "INSERT INTO grp (grp_name,user_id) VALUES ('$g_name', $u_id);";
+    $res = $database->query($sql);
+  }
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -51,9 +68,9 @@
           </div>
           <div class="modal-body">
           <div class="form">
-            <form>
-            <p>Group Name <input type="text"><p>
-            <button>Add Group</button>
+            <form action="" method="POST">
+            <p>Group Name <input type="text" name="group_name"><p>
+            <button type="submit" name="submit">Add Group</button>
             </form>
           </div>
           <div class="modal-footer">

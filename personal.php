@@ -66,13 +66,9 @@
               <div class="w3-container">
                 <p>Bill amount is <?php echo $row["amount"] ?></p>
                 <?php $sum += $row["amount"]; ?>
-                <p>Time: <?php echo $row["created_at"] ?></p> <br/>
-              </div>
-          
-            
+                <p>Time: <?php echo $row["created_at"] ?></p> <br/>            
             <?php
             } ?>
-            <div class="w3-block w3-black w3-left-align">
             <p>Total amount is <?php echo $sum; ?></p>
             </div>
             <?php
