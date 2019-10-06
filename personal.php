@@ -73,7 +73,7 @@
             <?php
             } ?>
             <div class="w3-block w3-black w3-left-align">
-            <p>Total amount is <?php echo $sum; ?></p>
+            <p>Total amount you spend is <?php echo $sum; ?></p>
             </div>
             <?php
           }
