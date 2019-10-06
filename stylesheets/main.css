@@ -12,16 +12,15 @@ html{
     background-size: cover;
     /*overflow: hidden;*/
 }
+
 body{
     height: 100%;
     margin: 0;
-    background: linear-gradient(to right, #43c6ac, #191654);
+    background: linear-gradient(to right, #f8fcfd, #43c6ac);
     background-repeat: no-repeat;
     line-height: 1.6em;
     color: white;
 }
-
-
 
 #map { position:absolute; top:10rem; bottom:10rem; width:100%; }
 

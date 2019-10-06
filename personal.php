@@ -38,7 +38,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li class="active"><a href="/feed">Personal</a></li>
-              <li><a href="#">Groups</a></li>
+              <li><a href="groups.php">Groups</a></li>
               <li><a href="history.php">History</a></li>
               <li><a href="logout.php">Log Out</a></li>
           </ul>
@@ -68,7 +68,7 @@
                       <h5 class="lead">Expense <?php echo $i; $i++; ?></h5>
                       <h6 class="card-subtitle mb-2 text-muted"></h6>
                       <p class="card-text">
-                        <p>Bill amount is <?php echo $row["amount"] ?></p>
+                        <p>Bill amount is ₹ <?php echo $row["amount"] ?></p>
                         <?php $sum += $row["amount"]; ?>
                         <p>Time: <?php echo $row["created_at"] ?></p><br>
                       </p>   
@@ -77,7 +77,7 @@
                 <?php
                 } ?>
                 <div class="drag-text">
-                <p>Total amount you spend is <?php echo $sum; ?></p>
+                <p>Total amount you spend is ₹ <?php echo $sum; ?></p>
                 </div>
                 <?php
               }

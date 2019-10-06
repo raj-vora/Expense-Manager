@@ -9,6 +9,7 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
       <link rel="stylesheet" href="./stylesheets/main.css">
+      <link rel="stylesheet" href="./stylesheets/history.css">
   </head>
     <body>
         <nav class="navbar navbar-inverse">
@@ -47,15 +48,29 @@
           $sql = "SELECT amount, created_at FROM expense WHERE user_id = $u_id UNION SELECT amount, created_at FROM shares WHERE user_id = $u_id ORDER BY created_at";
           $res = $database->query($sql);
           if(mysqli_num_rows($res) > 0){
-            while($row = mysqli_fetch_assoc($res)){
-              echo $row['amount']," ", $row['created_at'];
-              echo "<br>";
-            }
-          }
-          else{
-            echo "No result";
-          }
-      ?>
+            while($row = mysqli_fetch_assoc($res)){?>
+            <section class="timeline">
+            <ul>
+              <li>
+                  <div>
+                    <time>
+                    <?php echo $row['created_at']?>
+                      
+                    </time> 
+                    <b>
+                    ₹ <?php echo $row['amount'] ?>
+                    </b><br>
+                  </div>
+              </li>
+            </ul>
+          </section>
+          <?php }
+        }
+        else{
+          echo "No result";
+        }
+          ?>
       </div>
+      <script type="text/javascript" src="./javascripts/history.js"></script>
     </body>
 </html>
