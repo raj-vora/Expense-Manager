@@ -37,7 +37,7 @@
           <ul class="nav navbar-nav">              
           </ul>
           <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="/feed">Personal</a></li>
+              <li class="active"><a href="personal.php">Personal</a></li>
               <li><a href="groups.php">Groups</a></li>
               <li><a href="history.php">History</a></li>
               <li><a href="logout.php">Log Out</a></li>
@@ -77,7 +77,7 @@
                 <?php
                 } ?>
                 <div class="drag-text">
-                <p>Total amount you spend is ₹ <?php echo $sum; ?></p>
+                <h2><p>Total amount you spend is ₹ <?php echo $sum; ?></p></h2>
                 </div>
                 <?php
               }

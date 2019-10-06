@@ -3,7 +3,7 @@ body {
   }
   
   .card{ 
-    background: #F45B69;
+    background: rgb(185, 104, 72);
     border-radius: 6px; 
     text-align: center;
     width: 100%

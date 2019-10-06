@@ -16,10 +16,15 @@ html{
 body{
     height: 100%;
     margin: 0;
-    background: linear-gradient(to right, #f8fcfd, #43c6ac);
+    background: #0b0c10;
     background-repeat: no-repeat;
     line-height: 1.6em;
-    color: white;
+    color: white
+    background-image: 
+    radial-gradient(salmon 20%, transparent 0),
+    radial-gradient(salmon 20%, transparent 0);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
 }
 
 #map { position:absolute; top:10rem; bottom:10rem; width:100%; }
@@ -41,12 +46,9 @@ body{
 }
 .navbar-brand{
     font-family: 'Cedarville Cursive', cursive;
-    color: white;
     font-size: 3.5rem;
 }
-.navbar-inverse .navbar-brand{
-    color: black;
-}
+
 .navbar-inverse .navbar-nav li a{
   color:white;
 }
