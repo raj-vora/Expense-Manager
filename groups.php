@@ -52,26 +52,35 @@ $u_id = $_SESSION["user_id"];
           </div>
       </div>
     </nav>
-    <div>
-      <?php
-        $sql1 = "SELECT grp_name FROM grp WHERE user_id = $u_id";
-        $res1 = $database->query($sql1);
-        if(mysqli_num_rows($res1) > 0){
-          while($row = mysqli_fetch_assoc($res1)){
-            echo $row["grp_name"];
-            echo "<br/>";
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+      <h2 class="drag-text">Groups</h2>
+        <?php
+          $sql1 = "SELECT grp_name FROM grp WHERE user_id = $u_id";
+          $res1 = $database->query($sql1);
+          if(mysqli_num_rows($res1) > 0){
+            while($row = mysqli_fetch_assoc($res1)){
+              ?>
+              <button class="card card-default btn btn-primary">
+                <div class="card-body">
+                  <h5 class="lead"><?php echo $row["grp_name"]; ?></h5>
+                </div>
+              </button><br><br>
+          <?php }
           }
-        }
-        else{
-          echo "No result";
-        }
-      ?>
+          else{
+            echo "No result";
+          }
+        ?>
+        <div class="drag-text">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Add another group
+          </button>
+        </div>
+      </div>
     </div>
-    <div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-        Add another group
-      </button>
-    </div>
+    
     <div class="modal" id="myModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

@@ -76,7 +76,7 @@
                   </div><br>
                 <?php
                 } ?>
-                <div class="w3-block w3-black w3-left-align">
+                <div class="drag-text">
                 <p>Total amount you spend is <?php echo $sum; ?></p>
                 </div>
                 <?php
@@ -85,7 +85,7 @@
                 echo "No result";
               }
           ?>
-        <div>
+        <div class="drag-text">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
           Add another expense
           </button>
