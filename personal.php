@@ -62,19 +62,22 @@
           if(mysqli_num_rows($res) > 0){
             while($row = mysqli_fetch_assoc($res)){ ?>
 
-              <div class="w3-block w3-black w3-left-align">Expense <?php echo $i; $i++; ?></div>
-              <div class="w3-container">
-                <p>Bill amount is <?php echo $row["amount"] ?></p>
-                <?php $sum += $row["amount"]; ?>
-                <p>Time: <?php echo $row["created_at"] ?></p> <br/>            
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Expense <?php echo $i; $i++; ?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"></h6>
+                  <p class="card-text">
+                    <p>Bill amount is <?php echo $row["amount"] ?></p>
+                    <?php $sum += $row["amount"]; ?>
+                    <p>Time: <?php echo $row["created_at"] ?></p><br>
+                  </p>   
+                </div>
+              </div>
+
             <?php
             } ?>
-<<<<<<< HEAD
-            <p>Total amount is <?php echo $sum; ?></p>
-=======
             <div class="w3-block w3-black w3-left-align">
             <p>Total amount you spend is <?php echo $sum; ?></p>
->>>>>>> 04646adaa10718b2907b069e51448e6976e26752
             </div>
             <?php
           }

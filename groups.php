@@ -12,7 +12,6 @@ session_start();
     $sql = "INSERT INTO grp (grp_name,user_id) VALUES ('$g_name', $u_id);";
     $res = $database->query($sql);
   }
-
 ?>
 
 <!DOCTYPE html>
