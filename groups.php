@@ -68,7 +68,7 @@ $u_id = $_SESSION["user_id"];
                 $_SESSION['g_id'] = $row["grp_id"];
               ?>
                 <div class="card-body">
-                  <h5 class="lead"><?php echo $row["grp_name"]; ?></h5>
+                  <h5 class="lead" name= ""><?php echo $row["grp_name"]; ?></h5>
                 </div>
               </button>
               </form>
