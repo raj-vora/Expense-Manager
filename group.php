@@ -1,3 +1,43 @@
+<?php
+session_start();
+include_once("Database.class.php");
+include_once("Session.class.php");
+global $connection;
+$res;
+$res1;
+global $database;
+$connection = $database->getConnection();
+$u_id = $_SESSION["user_id"];
+  // if(isset($_POST['submit'])){
+  //   $m_name = $_POST["member"];
+  //   $sql = "INSERT INTO group_member (grp_name,user_id) VALUES ('$g_name', $u_id);";
+  //   $res = $database->query($sql);
+  // }
+  $g_id = $_SESSION['g_id'];
+  $sql1 = "SELECT username FROM user as u, group_member as g, grp WHERE g.group_id = $g_id AND u.user_id = g.user_id AND g.group_id = grp.grp_id";
+          $res1 = $database->query($sql1);
+          if(mysqli_num_rows($res1) > 0){
+            while($row = mysqli_fetch_assoc($res1)){
+              ?>
+              <form action="group.php" method="POST">
+              <button class="card card-default btn btn-primary">
+              <?php
+                $_SESSION['g_id'] = $row["grp_id"];
+              ?>
+                <div class="card-body">
+                  <h5 class="lead"><?php echo $row["grp_name"]; ?></h5>
+                </div>
+              </button>
+              </form>
+              <br><br>
+          <?php }
+          }
+          else{
+            echo "No result";
+          }
+        ?>
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,7 +68,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li><a href="personal.php">Personal</a></li>
-              <li class="active"><a href="#">Groups</a></li>
+              <li class="active"><a href="groups.php">Groups</a></li>
               <li> <a href="history.php">History</a></li>
               <li> <a href="logout.php">Log Out</a></li>
           </ul>
@@ -39,10 +79,10 @@
         <div class="container">
             <div class="col-md-4"></div>
                 <div class="col-md-4 login signin">
-                    <form action="">
+                    <form action="" method="POST">
                         <h3>Name of member<h3>
-                        <input type="text" class="form-control"><br>
-                        <button class="btn btn-primary signup">Add member</button>
+                        <input type="text" class="form-control" name="member"><br>
+                        <button class="btn btn-primary signup" type="submit" name="submit">Add member</button>
                         <h3>Total Group Members<h3> 
                         <input type="text" class="form-control">  
                     </form>
