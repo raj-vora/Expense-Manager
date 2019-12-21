@@ -4,6 +4,16 @@
 
 ------------------------------------------
 
+<p align="center">
+    <img src="./images/index.PNG" height="500px">
+    <img src="./images/groups.PNG" height="500px">
+    <img src="./images/personal.PNG" height="500px">
+    <img src="./images/OCR upload.PNG" height="500px">
+    <img src="./images/payment history.PNG" height="500px">
+</p>
+
+------------------------------------------
+
 ### Tech Stack
 - HTML
 - CSS
